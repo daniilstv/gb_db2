@@ -1,7 +1,7 @@
 use geodata;
 
 ALTER TABLE _countries
-    CHANGE country_id id INT PRIMARY KEY AUTO_INCREMENT, 
+    CHANGE country_id id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
     CHANGE title_ru title VARCHAR(150) NOT NULL,
     ADD INDEX (title),
     DROP title_pl,
@@ -20,8 +20,8 @@ ALTER TABLE _countries
     ;
 
 ALTER TABLE _regions
-    CHANGE region_id id INT PRIMARY KEY AUTO_INCREMENT, 
-    CHANGE title_ru title VARCHAR(150),
+    CHANGE region_id id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    CHANGE title_ru title VARCHAR(150) NOT NULL,
     ADD FOREIGN KEY (country_id) REFERENCES _countries(id),
     ADD INDEX (title),
     DROP title_pl,
@@ -40,8 +40,8 @@ ALTER TABLE _regions
     ;
 
 ALTER TABLE _cities
-    CHANGE city_id id INT PRIMARY KEY AUTO_INCREMENT, 
-    CHANGE title_ru title VARCHAR(150),
+    CHANGE city_id id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    CHANGE title_ru title VARCHAR(150) NOT NULL,
     ADD FOREIGN KEY (country_id) REFERENCES _countries(id),
     ADD FOREIGN KEY (region_id) REFERENCES _regions(id),
     ADD INDEX (title)
