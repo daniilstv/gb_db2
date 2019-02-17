@@ -23,6 +23,7 @@ ALTER TABLE _regions
     CHANGE region_id id INT PRIMARY KEY AUTO_INCREMENT, 
     CHANGE title_ru title VARCHAR(150),
     ADD FOREIGN KEY (country_id) REFERENCES _countries(id),
+    ADD INDEX (title),
     DROP title_pl,
     DROP title_ua,
     DROP title_es,
@@ -42,7 +43,8 @@ ALTER TABLE _cities
     CHANGE city_id id INT PRIMARY KEY AUTO_INCREMENT, 
     CHANGE title_ru title VARCHAR(150),
     ADD FOREIGN KEY (country_id) REFERENCES _countries(id),
-    ADD FOREIGN KEY (region_id) REFERENCES _regions(id)
+    ADD FOREIGN KEY (region_id) REFERENCES _regions(id),
+    ADD INDEX (title)
     ;
 
 ALTER TABLE _cities
@@ -73,6 +75,7 @@ ALTER TABLE _cities
     DROP area_ua,
     DROP area_ja,
     DROP area_lt,
+    DROP area_ru,
 
     DROP region_be,
     DROP region_cz,
@@ -86,5 +89,6 @@ ALTER TABLE _cities
     DROP region_pt,
     DROP region_ja,
     DROP region_lt,
-    DROP region_ua
+    DROP region_ua,
+    DROP region_ru
     ;
