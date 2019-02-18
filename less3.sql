@@ -6,7 +6,7 @@ SELECT
     geodata._countries.title AS 'Страна'
 
     FROM geodata._cities 
-        JOIN (geodata._regions, geodata._countries)
+        LEFT JOIN (geodata._regions, geodata._countries)
             ON (geodata._cities.region_id = geodata._regions.id 
                 AND geodata._cities.country_id = geodata._countries.id)
     
