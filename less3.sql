@@ -13,7 +13,7 @@ SELECT
     ;
 
 
-SELECT
+SELECT DISTINCT
     geodata._cities.title AS 'Город'
     FROM geodata._cities 
         JOIN geodata._regions ON geodata._cities.region_id = geodata._regions.id
