@@ -89,10 +89,11 @@ INSERT INTO `employees`.`employees`
         `gender`,
         `hire_date`)
     VALUES (
-        333,
-        '1981-01-01',
+        111,
+        1953-09-02,
         'Ivan',
         'Petrov',
         'M',
-        '2019-01-01'
+        curdate()
     );
+
