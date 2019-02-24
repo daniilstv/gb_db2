@@ -20,7 +20,6 @@ SELECT * FROM avg_salary;
 
 -- 4.2 function find_manager
  
-
 DROP FUNCTION IF EXISTS find_manager;
 
 DELIMITER $$
@@ -60,3 +59,41 @@ DELIMITER ;
 SELECT find_manager ('Chirstian', 'Koblick');
 
 -- 4.3
+
+INSERT INTO `employees`.`employees`
+        (`emp_no`,
+        `birth_date`,
+        `first_name`,
+        `last_name`,
+        `gender`,
+        `hire_date`)
+    VALUES (
+        333,
+        '1981-01-01',
+        'Ivan',
+        'Petrov',
+        'M',
+        '2019-01-01'
+    );
+
+
+-- 4.3 task
+
+DROP TRIGGER IF EXISTS bonus_tr;
+
+DELIMITER $$$
+CREATE TRIGGER bonus_tr 
+    BEFORE INSERT ON employees FOR EACH ROW
+
+BEGIN
+    SET NEW.emp_no = NEW.emp_no ;
+	-- SET NEW.salaries.salary = NEW.salaries.salary + 100 ; --???
+    
+    INSERT INTO `employees`.`salaries`
+        VALUES
+        (NEW.emp_no,
+        NEW.salaries.salary,
+        DATE,
+        '9999-01-01');
+
+END $$$
